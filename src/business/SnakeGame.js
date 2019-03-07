@@ -16,15 +16,15 @@ class SnakeGame {
     }
 
     start() {
-        if(this.state !== "new_game" && this.state !== "paused"){
+        if (this.state !== "new_game" && this.state !== "paused") {
             return;
         }
-        setInterval(() => {this.playATurn()}, this.computeInterval());
+        setInterval(() => { this.playATurn() }, this.computeInterval());
         this.state = "running";
     }
 
     pause() {
-        if(this.state !== "running"){
+        if (this.state !== "running") {
             return;
         }
         this.stopTurn();
@@ -32,10 +32,10 @@ class SnakeGame {
     }
 
     reset() {
-        if(this.state === "new_game"){
+        if (this.state === "new_game") {
             return;
         }
-        if(this.state === "running") {
+        if (this.state === "running") {
             this.stopTurn();
         }
         this.engine.reset();
@@ -44,15 +44,15 @@ class SnakeGame {
         this.state = "new_game";
     }
 
-    get level(){
+    get level() {
         return this._level;
     }
 
-    set level(l){
-        if(l < 1 || l > 5){
+    set level(l) {
+        if (l < 1 || l > 5) {
             throw "Illegal level";
         }
-        if(this.state === "running" || this.state === "paused"){
+        if (this.state === "running" || this.state === "paused") {
             return;
         }
         this._level = l;
@@ -77,8 +77,8 @@ class SnakeGame {
         }
     }
 
-    stopTurn(){
-        if(this.intervalId !== null){
+    stopTurn() {
+        if (this.intervalId !== null) {
             clearInterval(this.intervalId);
             this.intervalId = null;
         }
@@ -88,7 +88,7 @@ class SnakeGame {
         this.score += 5 * (this.level + 1);
     }
 
-    computeInterval(){
+    computeInterval() {
         return -80 * this.level + 580;
     }
 }

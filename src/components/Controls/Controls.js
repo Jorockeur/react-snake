@@ -3,19 +3,19 @@ import * as React from "react";
 import './controls.css';
 
 class Controls extends React.Component {
-    handleClickStart(e) {
+    handleClickStart() {
         console.log('start');
     }
 
-    handleClickPause(e) {
+    handleClickPause() {
         console.log('pause');
     }
 
     render() {
         return (
             <div className="controls">
-                <button onClick={ (e) => this.handleClickStart(e) }>Start</button>
-                <button onClick={ (e) => this.handleClickPause(e) }>Pause</button>
+                <button onClick={ () => this.handleClickStart() }>Start</button>
+                <button onClick={ () => this.handleClickPause() }>Pause</button>
             </div>
         )
     };
