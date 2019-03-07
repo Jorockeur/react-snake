@@ -2,24 +2,20 @@ import * as React from "react";
 
 import './controls.css';
 
-const StartButton = () => {
-    return(
-        <button>Start</button>
-    )
-};
-
-const PauseButton = () => {
-    return(
-        <button>Pause</button>
-    )
-};
-
 class Controls extends React.Component {
+    handleClickStart(e) {
+        console.log('start');
+    }
+
+    handleClickPause(e) {
+        console.log('pause');
+    }
+
     render() {
         return (
             <div className="controls">
-                <StartButton></StartButton>
-                <PauseButton></PauseButton>
+                <button onClick={ (e) => this.handleClickStart(e) }>Start</button>
+                <button onClick={ (e) => this.handleClickPause(e) }>Pause</button>
             </div>
         )
     };

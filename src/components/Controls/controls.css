@@ -1,0 +1,17 @@
+.controls {
+    width: 604px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+button {
+    padding: 15px 12px;
+    background-color: #333333;
+    border: none;
+    border-radius: 2px;
+    color: #ffffff;
+    cursor: pointer;
+}
