@@ -1,14 +1,15 @@
 import Engine from './SnakeEngine';
 import DirectionManager from './DirectionManager';
+import { computed, observable } from "mobx";
 
 class SnakeGame {
-    state = "new_game";
-    score = 0;
-    _level = 1;
-    size = 32;
-    engine;
-    directionManager;
-    intervalId;
+    @observable state = "new_game";
+    @observable score = 0;
+    @observable _level = 1;
+    @observable size = 48;
+    @observable engine;
+    @observable directionManager;
+    @observable intervalId;
 
     constructor() {
         this.engine = new Engine(this.size);
@@ -16,15 +17,16 @@ class SnakeGame {
     }
 
     start() {
-        if(this.state !== "new_game" && this.state !== "paused"){
+        if (this.state !== "new_game" && this.state !== "paused") {
             return;
         }
-        setInterval(() => {this.playATurn()}, this.computeInterval());
+
+        this.intervalId = setInterval(() => { this.playATurn() }, this.computeInterval());
         this.state = "running";
     }
 
     pause() {
-        if(this.state !== "running"){
+        if (this.state !== "running") {
             return;
         }
         this.stopTurn();
@@ -32,11 +34,8 @@ class SnakeGame {
     }
 
     reset() {
-        if(this.state === "new_game"){
+        if (this.state === "new_game" || this.state === "running") {
             return;
-        }
-        if(this.state === "running") {
-            this.stopTurn();
         }
         this.engine.reset();
         this.directionManager.reset();
@@ -44,15 +43,15 @@ class SnakeGame {
         this.state = "new_game";
     }
 
-    get level(){
+    @computed get level() {
         return this._level;
     }
 
-    set level(l){
-        if(l < 1 || l > 5){
+    set level(l) {
+        if (l < 1 || l > 5) {
             throw "Illegal level";
         }
-        if(this.state === "running" || this.state === "paused"){
+        if (this.state === "running" || this.state === "paused") {
             return;
         }
         this._level = l;
@@ -77,18 +76,21 @@ class SnakeGame {
         }
     }
 
-    stopTurn(){
-        if(this.intervalId !== null){
+    stopTurn() {
+        if (this.intervalId !== null) {
             clearInterval(this.intervalId);
             this.intervalId = null;
         }
     }
 
     incrementScore() {
-        this.score += 5 * (this.level + 1);
+        this.score += 5 + (this.level * 5);
     }
 
-    computeInterval(){
-        return -80 * this.level + 580;
+    // j'ai changé un poil la vitesse du snake, et la façon dont elle augmente en changeant le niveau
+    computeInterval() {
+        return -8 * this.level + 88;
     }
 }
+
+export default SnakeGame;

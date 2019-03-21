@@ -1,5 +1,7 @@
+import { computed, observable } from "mobx";
+
 class DirectionManager{
-    _direction;
+    @observable _direction;
 
     constructor() {
         this.reset();
@@ -11,24 +13,24 @@ class DirectionManager{
         window.addEventListener('keydown', monHandler, true);
     }
 
-    captureKeyboard(evt) {
-        if(evt.key === 'ArrowUp' && this._direction !== 'down') {
+    captureKeyboard(e) {
+        if (e.key === 'ArrowUp' && this._direction !== 'down') {
             this._direction = 'up';
-        } else if(evt.key === 'ArrowDown' && this._direction !== 'up') {
+        } else if (e.key === 'ArrowDown' && this._direction !== 'up') {
             this._direction = 'down';
-        } else if(evt.key === 'ArrowLeft' && this._direction !== 'right') {
+        } else if (e.key === 'ArrowLeft' && this._direction !== 'right') {
             this._direction = 'left';
-        } else if(evt.key === 'ArrowRight' && this._direction !== 'left') {
+        } else if (e.key === 'ArrowRight' && this._direction !== 'left') {
             this._direction = 'right';
         }
-        evt.preventDefault();
+        e.preventDefault();
     }
 
     reset() {
         this._direction = 'right';
     }
 
-    get direction() {
+    @computed get direction() {
         //retourne "up", "down", "left" ou "right"
         return this._direction;
     }
