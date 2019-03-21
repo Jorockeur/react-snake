@@ -16,13 +16,12 @@ class SnakeGame {
         this.directionManager = new DirectionManager();
     }
 
-    //j'ai changé un poil les conditions vu que j'ai revu le fonctionnement sur les boutons start, pause et reset
     start() {
         if (this.state !== "new_game" && this.state !== "paused") {
             return;
         }
 
-        setInterval(() => { this.playATurn() }, this.computeInterval());
+        this.intervalId = setInterval(() => { this.playATurn() }, this.computeInterval());
         this.state = "running";
     }
 
@@ -85,11 +84,12 @@ class SnakeGame {
     }
 
     incrementScore() {
-        this.score += 5 * (this.level + 1);
+        this.score += 5 + (this.level * 5);
     }
 
+    // j'ai changé un poil la vitesse du snake, et la façon dont elle augmente en changeant le niveau
     computeInterval() {
-        return -10 * this.level + 80;
+        return -8 * this.level + 88;
     }
 }
 
