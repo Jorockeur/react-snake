@@ -11,7 +11,7 @@ import { inject, observer } from "mobx-react";
     render() {
         return (
             <div>
-                <label htmlFor="level">Choose your level : </label>
+                <label htmlFor="level">Choose your level: </label>
                 <select id="level" onChange={ (e) => this.handleChange(e) }>
                     <option value={ 1 }>1</option>
                     <option value={ 2 }>2</option>
