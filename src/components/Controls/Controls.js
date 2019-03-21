@@ -5,45 +5,38 @@ import { PIXELS_UNIT } from "../../business/Position";
 
 @inject('store')
 @observer class Controls extends React.Component {
-    constructor(props) {
+    constructor(props){
         super(props);
-        this.state = {
-            pauseButtonText: 'Pause',
-            startStyle: 'enabled',
-            pauseStyle: 'disabled',
-            resetStyle: 'disabled',
-        }
-    }
-
-    handleClickStart() {
-        if (this.props.store.state !== 'new_game') return;
-        this.props.store.start();
-        this.setState({ startButtonText: 'Reset', startStyle: 'disabled', pauseStyle: 'enabled' });
-    }
-
-    handleClickPause() {
-        if (this.props.store.state === 'new_game' || this.props.store.state === 'game_over') return;
-        if (this.props.store.state === 'running') {
-            this.props.store.pause();
-            this.setState({ pauseButtonText: 'Unpause', resetStyle: 'enabled' });
-            return;
-        }
-        this.props.store.start();
-        this.setState({ pauseButtonText: 'Pause', resetStyle: 'disabled' });
-    }
-
-    handleClickReset() {
-        if (this.props.store.state === 'new_game' || this.props.store.state === 'running') return;
-        this.props.store.reset();
-        this.setState({ pauseButtonText: 'Pause', startStyle: 'enabled', pauseStyle: 'disabled', resetStyle: 'disabled' });
     }
 
     render() {
         return (
             <div className="controls" style={{ width: this.props.store.size * PIXELS_UNIT + 4}}>
-                <button onClick={ () => this.handleClickStart() } className={ this.state.startStyle }>Start</button>
-                <button onClick={ () => this.handleClickPause() } className={ this.state.pauseStyle }>{ this.state.pauseButtonText }</button>
-                <button onClick={ () => this.handleClickReset() } className={ this.state.resetStyle }>Reset</button>
+                {{
+                    'new_game': (
+                        <React.Fragment>
+                            <button onClick={ () => this.props.store.start() } className="enabled">Start</button>
+                            <button className="disabled">Reset</button>
+                        </React.Fragment>
+                    ),
+                    'running': (
+                        <React.Fragment>
+                            <button onClick={ () => this.props.store.pause() } className="enabled">Pause</button>
+                            <button className="disabled">Reset</button>
+                        </React.Fragment>
+                    ),
+                    'paused': (
+                        <React.Fragment>
+                            <button onClick={ () => this.props.store.start() } className="enabled">Resume</button>
+                            <button onClick={ () => this.props.store.reset() } className="enabled">Reset</button>
+                        </React.Fragment>
+                    ),
+                    'game_over': (
+                        <React.Fragment>
+                            <button onClick={ () => this.props.store.reset() } className="gameOver">Reset</button>
+                        </React.Fragment>
+                    )
+                }[this.props.store.state]}
             </div>
         )
     };

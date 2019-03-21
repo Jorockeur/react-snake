@@ -18,7 +18,7 @@ class SnakeGame {
 
     //j'ai changé un poil les conditions vu que j'ai revu le fonctionnement sur les boutons start, pause et reset
     start() {
-        if (this.state !== "new_game") {
+        if (this.state !== "new_game" && this.state !== "paused") {
             return;
         }
 
