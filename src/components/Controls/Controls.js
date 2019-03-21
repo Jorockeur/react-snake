@@ -1,21 +1,49 @@
 import * as React from "react";
-
 import './controls.css';
+import { inject, observer } from "mobx-react";
+import { PIXELS_UNIT } from "../../business/Position";
 
-class Controls extends React.Component {
+@inject('store')
+@observer class Controls extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            pauseButtonText: 'Pause',
+            startStyle: 'enabled',
+            pauseStyle: 'disabled',
+            resetStyle: 'disabled',
+        }
+    }
+
     handleClickStart() {
-        console.log('start');
+        if (this.props.store.state !== 'new_game') return;
+        this.props.store.start();
+        this.setState({ startButtonText: 'Reset', startStyle: 'disabled', pauseStyle: 'enabled' });
     }
 
     handleClickPause() {
-        console.log('pause');
+        if (this.props.store.state === 'new_game' || this.props.store.state === 'game_over') return;
+        if (this.props.store.state === 'running') {
+            this.props.store.pause();
+            this.setState({ pauseButtonText: 'Unpause', resetStyle: 'enabled' });
+            return;
+        }
+        this.props.store.start();
+        this.setState({ pauseButtonText: 'Pause', resetStyle: 'disabled' });
+    }
+
+    handleClickReset() {
+        if (this.props.store.state === 'new_game' || this.props.store.state === 'running') return;
+        this.props.store.reset();
+        this.setState({ pauseButtonText: 'Pause', startStyle: 'enabled', pauseStyle: 'disabled', resetStyle: 'disabled' });
     }
 
     render() {
         return (
-            <div className="controls">
-                <button onClick={ () => this.handleClickStart() }>Start</button>
-                <button onClick={ () => this.handleClickPause() }>Pause</button>
+            <div className="controls" style={{ width: this.props.store.size * PIXELS_UNIT + 4}}>
+                <button onClick={ () => this.handleClickStart() } className={ this.state.startStyle }>Start</button>
+                <button onClick={ () => this.handleClickPause() } className={ this.state.pauseStyle }>{ this.state.pauseButtonText }</button>
+                <button onClick={ () => this.handleClickReset() } className={ this.state.resetStyle }>Reset</button>
             </div>
         )
     };

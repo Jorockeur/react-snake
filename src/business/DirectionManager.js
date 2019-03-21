@@ -1,5 +1,7 @@
+import { computed, observable } from "mobx";
+
 class DirectionManager{
-    _direction;
+    @observable _direction;
 
     constructor() {
         this.reset();
@@ -28,7 +30,7 @@ class DirectionManager{
         this._direction = 'right';
     }
 
-    get direction() {
+    @computed get direction() {
         //retourne "up", "down", "left" ou "right"
         return this._direction;
     }

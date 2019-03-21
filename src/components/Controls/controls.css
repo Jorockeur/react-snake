@@ -1,17 +1,25 @@
 .controls {
-    width: 604px;
-    height: 120px;
+    margin-top: 10px;
+    height: 40px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 button {
+    width: calc(100% / 3 - 5px);
     padding: 15px 12px;
     background-color: #333333;
     border: none;
     border-radius: 2px;
     color: #ffffff;
     cursor: pointer;
+}
+
+.enabled {
+    background-color: #96D701;
+}
+
+.disabled {
+    background-color: #D70101;
 }

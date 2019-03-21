@@ -1,4 +1,4 @@
-import {observable} from "mobx";
+import { computed, observable } from "mobx";
 
 export const PIXELS_UNIT = 10;
 
@@ -11,11 +11,11 @@ export class Position {
         this.y = y;
     }
 
-    get xPixels() {
+    @computed get xPixels() {
         return this.x * PIXELS_UNIT;
     }
 
-    get yPixels() {
+    @computed get yPixels() {
         return this.y * PIXELS_UNIT;
     }
 
