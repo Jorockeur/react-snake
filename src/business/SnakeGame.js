@@ -6,7 +6,7 @@ class SnakeGame {
     @observable state = "new_game";
     @observable score = 0;
     @observable _level = 1;
-    @observable size = 48;
+    @observable size = 32;
     @observable engine;
     @observable directionManager;
     @observable intervalId;
@@ -61,6 +61,7 @@ class SnakeGame {
         if (this.state !== 'running') {
             return;
         }
+        this.directionManager._blockDirection = false;
         switch (this.engine.move(this.directionManager.direction)) {
             case 0: //le serpent a bougé, il ne s'est rien passé
                 break;
