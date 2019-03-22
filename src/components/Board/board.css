@@ -4,3 +4,16 @@
     margin-top: 100px;
     background-color: #ffffff;
 }
+
+.smoke {
+    filter: blur(4px);
+}
+
+.gameOverText {
+    z-index: 1000;
+    position: absolute;
+    text-align: center;
+    font-size: 52px;
+    color: #333333;
+    font-family: 'bebas', sans-serif;
+}

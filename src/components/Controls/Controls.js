@@ -26,7 +26,7 @@ const Controls = inject('store')(observer(({ store }) =>
             ),
             'game_over': (
                 <React.Fragment>
-                    <button onClick={ () => store.reset() } className="gameOver">Reset</button>
+                    <button onClick={ () => store.reset() } className="gameOver">Restart</button>
                 </React.Fragment>
             )
         }[store.state]}

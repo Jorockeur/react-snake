@@ -1,5 +1,5 @@
 import Position from './Position';
-import { createBlackBrick, createGreyColorBrick } from "./Brick";
+import { createrRedBrick, createGreyColorBrick } from "./Brick";
 import { observable } from "mobx";
 
 class SnakeEngine {
@@ -108,7 +108,7 @@ class SnakeEngine {
         const y = Math.ceil(this.gridSize / 2);
         for (let i=0; i < this.initialSnakeSize; i++){
             let p = new Position(xBase + i,y);
-            this.snake[i] = createBlackBrick(p);
+            this.snake[i] = createrRedBrick(p);
         }
         this.food = null;
         this.isBlocked = false;

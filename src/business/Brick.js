@@ -21,8 +21,7 @@ export class Brick extends Position {
     }
 }
 
-//TODO: refactor createBlackBrick to createRedBrick
-export function createBlackBrick(position) {
+export function createrRedBrick(position) {
     return new Brick(position.x, position.y, '#ff0000');
 }
 
