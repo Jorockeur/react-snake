@@ -24,6 +24,7 @@ class App extends React.Component {
     render() {
         return (
             <div className={ this.state.style }>
+                <h1>SNAKE PRIDE</h1>
                 <Board />
                 <Controls />
                 <Info />

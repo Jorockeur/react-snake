@@ -6,11 +6,31 @@
 body {
     height: 100vh;
     margin: 0;
-}
-
-body {
     font-family: 'bebas', sans-serif;
     font-size: 20px;
+}
+
+@-webkit-keyframes rainbowText {
+    0%{background-position:0 50%}
+    100%{background-position:100% 50%}
+}
+@-moz-keyframes rainbowText {
+    0%{background-position:0 50%}
+    100%{background-position:100% 50%}
+}
+@keyframes rainbowText {
+    0%{background-position:0 50%}
+    100%{background-position:100% 50%}
+}
+
+h1 {
+    background: linear-gradient(270deg, #ca2525, #caa225, #cac625, #2dca25, #25c9ca, #2530ca, #c225ca, #ca2525, #caa225, #cac625, #2dca25, #25c9ca, #2530ca, #c225ca, #ca2525);
+    background-size: 200% 200%;
+    -webkit-animation: rainbowText 2s linear infinite;
+    -moz-animation: rainbowText 2s linear infinite;
+    animation: rainbowText 2s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 #app {
