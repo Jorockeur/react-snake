@@ -10,6 +10,7 @@ class SnakeGame {
     @observable engine;
     @observable directionManager;
     @observable intervalId;
+    @observable rainbowInterval;
 
     constructor() {
         this.engine = new Engine(this.size);
@@ -20,14 +21,14 @@ class SnakeGame {
         if (this.state !== "new_game" && this.state !== "paused") {
             return;
         }
-
         this.intervalId = setInterval(() => { this.playATurn() }, this.computeInterval());
+        // l'interval pour les couleurs du snake est indépendant de l'autre
+        this.rainbowInterval = setInterval(() => { this.handleRainbowInterval() }, 20);
         this.state = "running";
     }
 
     pause() {
         if (this.state !== "running") {
-            return;
         }
         this.stopTurn();
         this.state = "paused";
@@ -74,6 +75,15 @@ class SnakeGame {
                 break;
             default:
                 throw "Illegal return of Engine";
+        }
+    }
+
+    // la fonction qui va gérer la couleur du snake
+    handleRainbowInterval() {
+        if (this.state === 'running') this.rainbowInterval++;
+        if (this.rainbowInterval > 360) this.rainbowInterval = 0;
+        for (let brick of this.engine.snake) {
+            brick.color = `hsl(${this.rainbowInterval}, 100%, 50%)`;
         }
     }
 

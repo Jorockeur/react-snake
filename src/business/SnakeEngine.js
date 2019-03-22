@@ -1,5 +1,5 @@
 import Position from './Position';
-import { createBlackBrick, createRandomColorBrick } from "./Brick";
+import { createBlackBrick, createGreyColorBrick } from "./Brick";
 import { observable } from "mobx";
 
 class SnakeEngine {
@@ -61,21 +61,7 @@ class SnakeEngine {
 
         //ici, i est l'indice d'une case libre dans la grille en version unidimensionnel
         const p = new Position(i % this.gridSize, Math.floor(i / this.gridSize));
-        this.food = createRandomColorBrick(p);
-
-       // //créer un tableau des positions possibles
-       // const availablePositions = [];
-       // for (let x = 0; x < this.gridSize ; x++){
-       //     for (let y = 0; y < this.gridSize; y ++){
-       //         let pos = new Position(x,y);
-       //         if (!this.snakeIsOn(pos)){
-       //             availablePositions.push(pos);
-       //         }
-       //     }
-       // }
-       // let i = Math.floor(Math.random() * availablePositions.length);
-       // return availablePositions[i];
-
+        this.food = createGreyColorBrick(p);
     }
 
     //calcule et retroune la position de la nouvelle tête du serpent
