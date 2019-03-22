@@ -21,11 +21,11 @@ export class Brick extends Position {
     }
 }
 
-export function createBlackBrick(position) {
-    return new Brick(position.x, position.y, '#333333');
+export function createrRedBrick(position) {
+    return new Brick(position.x, position.y, '#ff0000');
 }
 
-export function createRandomColorBrick(position) {
+export function createGreyColorBrick(position) {
     const i = Math.floor(Math.random() * COLORS.length);
-    return new Brick(position.x, position.y, COLORS[i]);
+    return new Brick(position.x, position.y, '#333333');
 }
