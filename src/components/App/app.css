@@ -3,11 +3,6 @@
     src: url('../../font/BebasNeue-Regular.ttf') format('truetype');
 }
 
-@font-face {
-    font-family: 'Roboto';
-    src: url('https://fonts.googleapis.com/css?family=Roboto') format('truetype');
-}
-
 body {
     height: 100vh;
     margin: 0;
