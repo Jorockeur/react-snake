@@ -1,13 +1,14 @@
 import * as React from "react";
+
 import './nightmode.css';
 
 class NightMode extends React.Component {
     handleClick() {
         if (this.props.nightmode) {
-            this.props.setStateInParent('game', false);
+            this.props.setStateInParent({style: 'game',nightmode: false});
             return;
         }
-        this.props.setStateInParent('game nightmode', true);
+        this.props.setStateInParent({style: 'game nightmode',nightmode: true});
     }
 
     render() {

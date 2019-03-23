@@ -1,22 +1,15 @@
 import * as React from "react";
 
-import './snake.css';
 import GraphicBrick from "../GraphicBrick/GraphicBrick";
-import { inject } from "mobx-react";
 
-@inject('store')
-class Snake extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+import './snake.css';
 
-    render() {
-        return (
-            <div className="snake">
-                { this.props.store.engine.snake.map((brick, i) => <GraphicBrick brick={ brick } key={ i }/>) }
-            </div>
-        )
-    };
-}
+import {inject, observer} from "mobx-react";
+
+const Snake = inject('store')(observer(({ store }) =>
+    <div className="snake">
+        { store.engine.snake.map((brick, i) => <GraphicBrick brick={ brick } key={ i }/>) }
+    </div>
+));
 
 export default Snake;

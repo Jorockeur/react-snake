@@ -1,11 +1,12 @@
 import * as React from "react";
 
+import GraphicBrick from "../GraphicBrick/GraphicBrick";
 import Snake from "../Snake/Snake";
 
 import './board.css';
-import {inject, observer} from "mobx-react";
-import {PIXELS_UNIT} from "../../business/Position";
-import GraphicBrick from "../GraphicBrick/GraphicBrick";
+
+import { inject, observer } from "mobx-react";
+import { PIXELS_UNIT } from "../../business/Position";
 
 const Board = inject('store')(observer(({ store }) =>
     <React.Fragment>

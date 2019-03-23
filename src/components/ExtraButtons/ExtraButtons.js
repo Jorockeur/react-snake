@@ -1,11 +1,12 @@
 import * as React from "react";
 
-
-import './extrabuttons.css';
 import NightMode from "../NightMode/NightMode";
 import Pride from "../Pride/Pride";
-import {PIXELS_UNIT} from "../../business/Position";
+
+import './extrabuttons.css';
+
 import { inject, observer } from "mobx-react";
+import { PIXELS_UNIT } from "../../business/Position";
 
 @inject('store')
 @observer class ExtraButtons extends React.Component {
@@ -13,7 +14,7 @@ import { inject, observer } from "mobx-react";
         return (
             <div className="extrabuttons" style={{ width: this.props.store.size * PIXELS_UNIT + 4}}>
                 <NightMode setStateInParent={ this.props.setStateInParent } nightmode={ this.props.nightmode } />
-                <Pride nightmode={ this.props.nightmode } />
+                <Pride setStateInParent={ this.props.setStateInParent } nightmode={ this.props.nightmode } />
             </div>
         )
     };

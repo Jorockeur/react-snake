@@ -1,8 +1,11 @@
 import * as React from "react";
-import './info.css';
-import { inject, observer } from "mobx-react";
+
 import Level from "../Level/Level";
-import {PIXELS_UNIT} from "../../business/Position";
+
+import './info.css';
+
+import { inject, observer } from "mobx-react";
+import { PIXELS_UNIT } from "../../business/Position";
 
 const Info = inject('store')(observer(({ store }) =>
     <div className='info' style={{ width: store.size * PIXELS_UNIT + 4}}>

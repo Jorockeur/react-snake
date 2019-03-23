@@ -1,15 +1,21 @@
 import * as React from "react";
+
 import './pride.css';
 
-class Pride extends React.Component {
-    handleClick() {
-        if (this.state.nightmode) {
-            this.setState({ nightmode: false });
-            this.props.setStateInParent('game');
-            return;
+import { inject, observer } from "mobx-react";
+
+@inject('store')
+@observer class Pride extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isPrideOn: false,
         }
-        this.setState({ nightmode: true });
-        this.props.setStateInParent('game nightmode');
+    }
+
+    handleClick() {
+        this.props.setStateInParent({ isPrideOn: !this.state.isPrideOn });
+        this.setState({ isPrideOn: !this.state.isPrideOn })
     }
 
     render() {

@@ -1,7 +1,8 @@
 import { computed, observable } from "mobx";
 
 class DirectionManager{
-    @observable _direction;
+    _direction;
+    // on empêche de changer _direction si on a déjà donné une direction à cette frame
     @observable _blockDirection = false;
 
     constructor() {
