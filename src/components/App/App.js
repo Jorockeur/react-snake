@@ -15,7 +15,7 @@ import { inject, observer } from "mobx-react";
     constructor(props) {
         super(props);
         this.state = {
-            style: 'game',
+            style: 'container',
             nightmode: false,
             isPrideOn: false,
         };
@@ -29,11 +29,20 @@ import { inject, observer } from "mobx-react";
     render() {
         return (
             <div className={ this.state.style }>
-                <Title isPrideOn={ this.state.isPrideOn } />
-                <Board />
-                <Controls />
-                <Info />
-                <ExtraButtons setStateInParent={ this.setStateInParent } nightmode={ this.state.nightmode } isPrideOn={ this.state.isPrideOn } />
+                <div className='placement'/>
+                <div className='game'>
+                    <Title isPrideOn={ this.state.isPrideOn } />
+                    <Board />
+                    <Controls />
+                    <Info />
+                    <ExtraButtons setStateInParent={ this.setStateInParent } nightmode={ this.state.nightmode } isPrideOn={ this.state.isPrideOn } />
+                </div>
+                <div className="controls">
+                    <p>
+                        Press WASD / ZQSD to change direction<br/>
+                        Press SPACE to START or PAUSE the game
+                    </p>
+                </div>
             </div>
         )
     };

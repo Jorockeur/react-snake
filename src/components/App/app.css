@@ -15,12 +15,29 @@ body {
     height: 100%;
 }
 
+.container {
+    display: flex;
+    height: 100%;
+}
+
+.placement, .controls {
+    width: calc(100% / 3 - 5px);
+}
+
 .game {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0;
-    height: 100%;
+}
+
+.controls {
+    font-size: 30px;
+}
+
+.controls p {
+    padding-left: 20px;
+    margin-top: 250px;
 }
 
 .nightmode {

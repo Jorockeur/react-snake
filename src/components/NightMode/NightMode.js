@@ -5,10 +5,10 @@ import './nightmode.css';
 class NightMode extends React.Component {
     handleClick() {
         if (this.props.nightmode) {
-            this.props.setStateInParent({style: 'game',nightmode: false});
+            this.props.setStateInParent({style: 'container',nightmode: false});
             return;
         }
-        this.props.setStateInParent({style: 'game nightmode',nightmode: true});
+        this.props.setStateInParent({style: 'container nightmode',nightmode: true});
     }
 
     render() {
