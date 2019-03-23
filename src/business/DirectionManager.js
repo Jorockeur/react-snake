@@ -17,13 +17,13 @@ class DirectionManager{
 
     captureKeyboard(e) {
         if (this._blockDirection) return;
-        if ((e.key === 'ArrowUp' || e.key === 'z') && this._direction !== 'down') {
+        if ((e.key === 'ArrowUp' || e.key === 'z' || e.key === 'w') && this._direction !== 'down') {
             this._direction = 'up';
             this._blockDirection = true;
         } else if ((e.key === 'ArrowDown' || e.key === 's') && this._direction !== 'up') {
             this._direction = 'down';
             this._blockDirection = true;
-        } else if ((e.key === 'ArrowLeft' || e.key === 'q') && this._direction !== 'right') {
+        } else if ((e.key === 'ArrowLeft' || e.key === 'q' || e.key === 'a') && this._direction !== 'right') {
             this._direction = 'left';
             this._blockDirection = true;
         } else if ((e.key === 'ArrowRight' || e.key === 'd') && this._direction !== 'left') {
