@@ -1,5 +1,7 @@
 import * as React from "react";
+
 import './level.css';
+
 import { inject, observer } from "mobx-react";
 
 @inject('store')

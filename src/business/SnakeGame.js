@@ -1,16 +1,18 @@
 import Engine from './SnakeEngine';
 import DirectionManager from './DirectionManager';
+
 import { computed, observable } from "mobx";
 
 class SnakeGame {
     @observable state = "new_game";
     @observable score = 0;
     @observable _level = 1;
-    @observable size = 32;
     @observable engine;
-    @observable directionManager;
-    @observable intervalId;
-    @observable rainbowInterval;
+    size = 32;
+    directionManager;
+    intervalId;
+    rainbowInterval;
+
 
     constructor() {
         this.engine = new Engine(this.size);
@@ -22,9 +24,10 @@ class SnakeGame {
             return;
         }
         this.intervalId = setInterval(() => { this.playATurn() }, this.computeInterval());
+        this.state = "running";
+
         // l'interval pour les couleurs du snake est indépendant de l'autre
         this.rainbowInterval = setInterval(() => { this.handleRainbowInterval() }, 20);
-        this.state = "running";
     }
 
     pause() {
@@ -80,7 +83,8 @@ class SnakeGame {
 
     // la fonction qui va gérer la couleur du snake
     handleRainbowInterval() {
-        if (this.state === 'running') this.rainbowInterval++;
+        if (this.state !== 'running') return;
+        this.rainbowInterval++;
         if (this.rainbowInterval > 360) this.rainbowInterval = 0;
         for (let brick of this.engine.snake) {
             brick.color = `hsl(${this.rainbowInterval}, 100%, 50%)`;

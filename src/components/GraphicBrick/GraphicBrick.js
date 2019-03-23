@@ -1,4 +1,7 @@
 import React from "react";
+
+import './graphicbrick.css';
+
 import { inject, observer } from "mobx-react";
 import { PIXELS_UNIT } from "../../business/Position";
 

@@ -6,15 +6,22 @@
 body {
     height: 100vh;
     margin: 0;
-}
-
-body {
     font-family: 'bebas', sans-serif;
     font-size: 20px;
+    color: #333333;
 }
 
 #app {
     height: 100%;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+}
+
+.placement, .controls {
+    width: calc(100% / 3 - 5px);
 }
 
 .game {
@@ -22,7 +29,15 @@ body {
     flex-direction: column;
     align-items: center;
     margin: 0;
-    height: 100%;
+}
+
+.controls {
+    font-size: 30px;
+}
+
+.controls p {
+    padding-left: 20px;
+    margin-top: 250px;
 }
 
 .nightmode {
