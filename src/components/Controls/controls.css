@@ -18,14 +18,14 @@ button {
 }
 
 .enabled {
-    background-color: #96D701;
+    background-color: hsl(110,70%,42%);
 }
 
 .disabled {
-    background-color: #D70101;
+    background-color: hsl(0,70%,42%);
 }
 
 .gameOver {
-    background-color: #96D701;
+    background-color: hsl(110,70%,42%);
     width: 100%;
 }
