@@ -6,6 +6,7 @@ import Info from "../Info/Info";
 import NightMode from "../NightMode/NightMode";
 
 import './app.css';
+import ExtraButtons from "../ExtraButtons/ExtraButtons";
 
 
 class App extends React.Component {
@@ -13,12 +14,13 @@ class App extends React.Component {
         super(props);
         this.state = {
             style: 'game',
+            nightmode: false,
         };
-        this.setStyle = this.setStyle.bind(this);
+        this.setStateInParent = this.setStateInParent.bind(this);
     }
 
-    setStyle(string) {
-        this.setState({ style: string });
+    setStateInParent(string, nightmode) {
+        this.setState({ style: string, nightmode: nightmode });
     }
 
     render() {
@@ -28,7 +30,7 @@ class App extends React.Component {
                 <Board />
                 <Controls />
                 <Info />
-                <NightMode setStyle={ this.setStyle }/>
+                <ExtraButtons setStateInParent={ this.setStateInParent } nightmode={ this.state.nightmode } />
             </div>
         )
     };
