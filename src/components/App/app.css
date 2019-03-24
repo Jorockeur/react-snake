@@ -31,11 +31,11 @@ body {
     margin: 0;
 }
 
-.controls {
+.howToPlay {
     font-size: 30px;
 }
 
-.controls p {
+.howToPlay p {
     padding-left: 20px;
     margin-top: 250px;
 }
