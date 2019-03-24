@@ -37,10 +37,11 @@ import { inject, observer } from "mobx-react";
                     <Info />
                     <ExtraButtons setStateInParent={ this.setStateInParent } nightmode={ this.state.nightmode } isPrideOn={ this.state.isPrideOn } />
                 </div>
-                <div className="controls">
+                <div className="howToPlay">
                     <p>
-                        Press WASD / ZQSD to change direction<br/>
-                        Press SPACE to START or PAUSE the game
+                        Press WASD / ZQSD or the arrow keys to change direction<br/>
+                        Press SPACE to START or PAUSE the game<br/>
+                        Enjoy!
                     </p>
                 </div>
             </div>
